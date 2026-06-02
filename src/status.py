@@ -22,11 +22,13 @@ def main():
         html = soup.find("div", id="mainNews").prettify()
 
         with open("memory.html", "r+", encoding="utf-8") as f:
+
             if f.read() != html:
                 logging.warning("Something Changed!")  # Debug
 
                 clear_file(f)
                 f.write(html)
+                f.flush()
 
                 load(articles)
 
@@ -46,7 +48,7 @@ def clear_file(f):
 def load(articles):
     articles.clear()
 
-    with open("memory.html", "r+", encoding="utf-8") as f:
+    with open("memory.html", "r", encoding="utf-8") as f:
         soup_memory = BeautifulSoup(f.read(), "lxml")
         articles_html = soup_memory.find_all("div", class_="label1")
 
