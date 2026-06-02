@@ -7,7 +7,7 @@ import os
 
 logging.basicConfig(level=logging.INFO)
 
-url = f"https://www.youm7.com/home/?t={int(time.time())}"
+url = "https://www.youm7.com/home"
 
 
 def main():
@@ -20,6 +20,7 @@ def main():
         r = requests.get(url).text
         soup = BeautifulSoup(r, "lxml")
         html = soup.find("div", id="mainNews").prettify()
+
 
         with open("memory.html", "r+", encoding="utf-8") as f:
 
