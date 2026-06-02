@@ -7,7 +7,7 @@ import os
 
 logging.basicConfig(level=logging.INFO)
 
-url = "https://www.youm7.com/home/"
+url = f"https://www.youm7.com/home/?t={int(time.time())}"
 
 
 def main():
