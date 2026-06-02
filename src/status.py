@@ -3,8 +3,12 @@ from bs4 import BeautifulSoup
 import time
 from datetime import datetime
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
+
+if not os.path.exists("memory.html"):
+    open("memory.html", "w", encoding="utf-8").close()
 
 def main():
     url = "https://www.youm7.com/home/"
