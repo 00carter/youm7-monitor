@@ -9,11 +9,13 @@ import json
 
 logging.basicConfig(level=logging.INFO)
 
-url = "https://www.youm7.com/home"
+
 
 
 def main():
     while True:
+        url = f"https://www.youm7.com/home/?t={int(time.time())}"
+        time.sleep(10)
         current_articles = []
         try:
             response = requests.get(url, timeout=10)
@@ -64,7 +66,7 @@ def main():
             check_memory(current_articles)
             continue
 
-        time.sleep(10)
+        
 
 
 def clear_file(f):
@@ -81,8 +83,8 @@ def check_memory(current_articles):
 def display_new_articles(new_articles: list) -> str:  # Removing later
     for article in new_articles:
         print(f"\n📰 Title: {article['title']}")
-        print(f"🔗 Link: {article['link']}")
-        print(f"🖼️  Image: https://www.youm7.com/{article['image']}\n")
+        print(f"🔗 Link: https://www.youm7.com/{article['link']}")
+        print(f"🖼️  Image: {article['image']}\n")
 
 
 main()
